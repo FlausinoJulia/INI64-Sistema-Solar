@@ -5,6 +5,7 @@ public class RotateAround : MonoBehaviour {
 
 	public Transform target; // the object to rotate around
 	public int speed; // the speed of rotation
+	public bool giraDeitado = false;
 	
 	void Start() {
 		if (target == null) 
@@ -19,6 +20,9 @@ public class RotateAround : MonoBehaviour {
 		// RotateAround takes three arguments, first is the Vector to rotate around
 		// second is a vector that axis to rotate around
 		// third is the degrees to rotate, in this case the speed per second
-		transform.RotateAround(target.transform.position,target.transform.up,speed * Time.deltaTime);
+		if (giraDeitado)
+			transform.RotateAround(target.transform.position,target.transform.right,speed * Time.deltaTime);
+		else
+			transform.RotateAround(target.transform.position,target.transform.up,speed * Time.deltaTime);
 	}
 }
