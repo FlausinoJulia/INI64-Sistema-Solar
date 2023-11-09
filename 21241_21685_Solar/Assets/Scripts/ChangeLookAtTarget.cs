@@ -18,5 +18,18 @@ public class ChangeLookAtTarget : MonoBehaviour {
 		// change the target of the LookAtTarget script to be this gameobject.
 		LookAtTarget.target = target;
 		Camera.main.fieldOfView = 60*target.transform.localScale.x;
+
+		PausaOutrasMusica();
+		target.GetComponent<AudioSource>().mute = false;
+	}
+
+	void PausaOutrasMusica() {
+		AudioSource[] musicas = FindObjectsOfType<AudioSource>();
+
+		foreach (AudioSource musica in musicas) 
+		{
+			if (musica.isPlaying)
+				musica.mute = true;
+		}
 	}
 }
