@@ -16,14 +16,14 @@ public class ChangeLookAtTarget : MonoBehaviour {
 	// Called when MouseDown on this gameObject
 	void OnMouseDown () {
 		// change the target of the LookAtTarget script to be this gameobject.
-		LookAtTarget.target = target;
-		Camera.main.fieldOfView = 60*target.transform.localScale.x;
+	    LookAtTarget.target = target;
+		//Camera.main.fieldOfView = 60*target.transform.localScale.x;
 
-		PausaOutrasMusica();
+		MutarOutrasMusicas();
 		target.GetComponent<AudioSource>().mute = false;
 	}
 
-	void PausaOutrasMusica() {
+	void MutarOutrasMusicas() {
 		AudioSource[] musicas = FindObjectsOfType<AudioSource>();
 
 		foreach (AudioSource musica in musicas) 
